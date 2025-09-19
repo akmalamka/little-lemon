@@ -1,0 +1,57 @@
+/* Header wrapper */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: top 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.site-header.hidden {
+  top: -80px; /* hides on scroll down */
+}
+
+.site-header.visible {
+  top: 0; /* shows on scroll up */
+}
+
+/* Navbar layout */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Menu list */
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Menu items */
+.menu li {
+  margin-left: 1.5rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #007b5e; /* little lemon green */
+}
