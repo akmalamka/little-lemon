@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
+import Logo from "../assets/Logo.svg"; // adjust path if your Logo.svg is elsewhere
 
 function Header() {
   const [prevScroll, setPrevScroll] = useState(0);
@@ -16,7 +17,6 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScroll]);
 
-  // close menu when link clicked
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
@@ -25,7 +25,9 @@ function Header() {
     <header className={`site-header ${visible ? "visible" : "hidden"}`}>
       <nav className="navbar">
         <div className="logo">
-          <a href="#home">Little Lemon</a>
+          <a href="#home">
+            <img src={Logo} alt="Little Lemon Logo" className="logo-img" />
+          </a>
         </div>
 
         {/* Hamburger for mobile */}
