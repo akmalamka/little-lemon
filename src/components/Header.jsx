@@ -4,6 +4,7 @@ import "./Header.css";
 function Header() {
   const [prevScroll, setPrevScroll] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,17 +16,34 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScroll]);
 
+  // close menu when link clicked
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className={`site-header ${visible ? "visible" : "hidden"}`}>
       <nav className="navbar">
-        <div className="logo">Little Lemon</div>
-        <ul className="menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#reservations">Reservations</a></li>
-          <li><a href="#order-online">Order Online</a></li>
-          <li><a href="#login">Login</a></li>
+        <div className="logo">
+          <a href="#home">Little Lemon</a>
+        </div>
+
+        {/* Hamburger for mobile */}
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+
+        <ul className={`menu ${menuOpen ? "open" : ""}`}>
+          <li><a href="#home" onClick={handleLinkClick}>Home</a></li>
+          <li><a href="#about" onClick={handleLinkClick}>About</a></li>
+          <li><a href="#menu" onClick={handleLinkClick}>Menu</a></li>
+          <li><a href="#reservations" onClick={handleLinkClick}>Reservations</a></li>
+          <li><a href="#order-online" onClick={handleLinkClick}>Order Online</a></li>
+          <li><a href="#login" onClick={handleLinkClick}>Login</a></li>
         </ul>
       </nav>
     </header>

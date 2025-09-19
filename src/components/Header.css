@@ -10,11 +10,11 @@
 }
 
 .site-header.hidden {
-  top: -80px; /* hides on scroll down */
+  top: -80px;
 }
 
 .site-header.visible {
-  top: 0; /* shows on scroll up */
+  top: 0;
 }
 
 /* Navbar layout */
@@ -26,13 +26,14 @@
 }
 
 /* Logo */
-.logo {
+.logo a {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+  text-decoration: none;
 }
 
-/* Menu list */
+/* Menu (desktop default) */
 .menu {
   display: flex;
   list-style: none;
@@ -40,7 +41,6 @@
   padding: 0;
 }
 
-/* Menu items */
 .menu li {
   margin-left: 1.5rem;
 }
@@ -53,5 +53,46 @@
 }
 
 .menu a:hover {
-  color: #007b5e; /* little lemon green */
+  color: #007b5e;
+}
+
+/* Hamburger hidden by default */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ------------------------------
+   Responsive styles
+--------------------------------*/
+@media (max-width: 768px) {
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+    color: #333;
+  }
+
+  /* Hide menu initially */
+  .menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .menu li {
+    margin: 1rem 0;
+  }
 }
