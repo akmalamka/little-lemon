@@ -28,8 +28,9 @@
 /* Logo */
 .logo a {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--highlight-dark);
   text-decoration: none;
 }
 
@@ -47,13 +48,14 @@
 
 .menu a {
   text-decoration: none;
-  color: #333;
+  font-family: var(--font-body);
   font-weight: 500;
+  color: var(--highlight-dark);
   transition: color 0.2s;
 }
 
 .menu a:hover {
-  color: #007b5e;
+  color: var(--primary-green);
 }
 
 /* Hamburger hidden by default */
@@ -72,7 +74,7 @@
   /* Show hamburger */
   .hamburger {
     display: block;
-    color: #333;
+    color: var(--highlight-dark);
   }
 
   /* Hide menu initially */
@@ -86,6 +88,7 @@
     width: 200px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     padding: 1rem;
+    border-radius: 8px;
   }
 
   .menu.open {

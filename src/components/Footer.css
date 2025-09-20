@@ -16,12 +16,15 @@
 .footer-column h3,
 .footer-column h2 {
   margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  color: var(--highlight-dark);
 }
 
 .footer-column ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-family: var(--font-body);
 }
 
 .footer-column ul li {
@@ -35,13 +38,14 @@
 }
 
 .footer-column ul li a:hover {
-  color: #00704a;
+  color: var(--primary-green);
 }
 
 .footer-logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00704a;
+  color: var(--primary-green);
+  margin-top: 0.5rem;
 }
 
 .footer-bottom {
@@ -49,4 +53,19 @@
   margin-top: 2rem;
   font-size: 0.875rem;
   color: #666;
+  font-family: var(--font-body);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }

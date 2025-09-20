@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import Logo from "../assets/Logo.svg"; // adjust path if your Logo.svg is elsewhere
-
+import Logo from "../assets/Logo.svg";
 function Header() {
   const [prevScroll, setPrevScroll] = useState(0);
   const [visible, setVisible] = useState(true);

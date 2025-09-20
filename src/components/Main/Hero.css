@@ -1,16 +1,16 @@
 .hero {
-  width: 100vw; /* full viewport width */
-  padding: 4rem 1rem;
+  width: 100vw;
+  padding: var(--space-xl) var(--space-md);
   background: #fff;
 }
 
 .hero-content {
-  max-width: 1200px; /* still keep content centered */
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: var(--space-lg);
   flex-wrap: wrap;
 }
 
@@ -18,35 +18,36 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-md);
   min-width: 280px;
 }
 
 .hero-title {
   font-size: 2.5rem;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  color: var(--primary-green);
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
-  color: #555;
+  color: var(--primary-yellow);
 }
 
 .hero-description {
   font-size: 1rem;
   line-height: 1.6;
   max-width: 500px;
+  font-family: var(--font-body);
+  color: var(--highlight-dark);
 }
 
 .hero-cta {
-  margin-top: 1rem;
+  margin-top: var(--space-sm);
   padding: 0.75rem 1.5rem;
-  background-color: #f4ce14;
-  border: none;
+  background-color: var(--primary-yellow);
   border-radius: 8px;
   font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  color: var(--highlight-dark);
 }
 
 .hero-cta:hover {
@@ -70,7 +71,7 @@
   object-fit: cover;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;

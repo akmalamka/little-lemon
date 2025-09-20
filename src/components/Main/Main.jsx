@@ -6,7 +6,7 @@ import AboutHero from "./AboutHero";
 
 function Main() {
   return (
-    <main>
+    <main style={{ marginTop: "85px" }}>
       <Hero />
       <Specials />
       <Testimonials />

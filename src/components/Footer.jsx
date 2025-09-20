@@ -1,4 +1,5 @@
 import "./Footer.css";
+import Logo from "../assets/Logo.svg";
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="footer-container">
         {/* Logo */}
         <div className="footer-column">
-          <h2 className="footer-logo">Little Lemon</h2>
+          <img src={Logo} alt="Little Lemon Logo" className="logo-img" />
           <p>Fresh Mediterranean flavors, crafted with love.</p>
         </div>
 

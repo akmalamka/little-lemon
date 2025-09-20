@@ -1,10 +1,10 @@
 .specials {
   width: 100%;
-  padding: 4rem 1rem;
-  background: #f9f9f9;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--highlight-light);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-lg);
 }
 
 .specials-header {
@@ -18,27 +18,31 @@
 
 .specials-title {
   font-size: 2rem;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--highlight-dark);
 }
 
 .specials-cta {
   padding: 0.6rem 1.2rem;
-  background-color: #f4ce14;
+  background-color: var(--primary-yellow);
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-family: var(--font-body);
+  color: var(--highlight-dark);
 }
 
 .specials-cta:hover {
-  background-color: #d4ae00;
+  background-color: #d4ae00; /* could also add a --primary-yellow-dark token if you want */
 }
 
 .specials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: var(--space-lg);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -47,10 +51,10 @@
 .special-card {
   background: #fff;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-sm);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -65,35 +69,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: var(--space-xs);
 }
 
 .special-card-title {
   font-size: 1.25rem;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--highlight-dark);
 }
 
 .special-card-price {
-  font-weight: bold;
-  color: #f4ce14;
+  font-weight: 700;
+  color: var(--primary-yellow);
 }
 
 .special-card-desc {
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #555;
+  color: var(--highlight-dark);
+  opacity: 0.8;
   flex-grow: 1;
 }
 
 .special-card-cta {
   margin-top: auto;
   padding: 0.6rem;
-  background: #f4ce14;
+  background: var(--primary-yellow);
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-family: var(--font-body);
+  color: var(--highlight-dark);
 }
 
 .special-card-cta:hover {
@@ -110,7 +119,7 @@
 @media (max-width: 768px) {
   .specials-header {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-md);
     text-align: center;
   }
 
