@@ -34,7 +34,7 @@
   margin-top: var(--space-md);
 }
 
-/* 🎨 Back to Home Button */
+/* Back to Home Button */
 .home-btn {
   display: inline-block;
   margin-top: var(--space-lg);
@@ -51,7 +51,7 @@
   color: #fff;
 }
 
-/* 📱 Responsive adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .confirmed-card {
     padding: var(--space-md);

@@ -29,7 +29,6 @@ describe("BookingForm Component", () => {
     expect(screen.getByLabelText("Occasion")).toBeInTheDocument();
   });
 
-  // ✅ Step 1: HTML5 attributes
   test("date input has required attribute", () => {
     setup();
     const dateInput = screen.getByLabelText("Choose date");
@@ -45,7 +44,6 @@ describe("BookingForm Component", () => {
     expect(guestsInput).toHaveAttribute("type", "number");
   });
 
-  // ✅ Step 2: JS validation (Yup + Formik)
   test("shows error when submitting empty form", async () => {
     setup();
     const submitButton = screen.getByRole("button", {
@@ -78,7 +76,6 @@ describe("BookingForm Component", () => {
 
   const submitButton = screen.getByRole("button", { name: /make your reservation/i });
 
-  // ⏳ wait for formik validation
   await waitFor(() => expect(submitButton).toBeEnabled());
 
   fireEvent.click(submitButton);
