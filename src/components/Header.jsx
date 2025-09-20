@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // ✅ import Link
+import { Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "../assets/Logo.svg";
 
@@ -23,10 +23,10 @@ function Header() {
   };
 
   return (
-    <header className={`site-header ${visible ? "visible" : "hidden"}`}>
-      <nav className="navbar">
+    <header className={`site-header ${visible ? "visible" : "hidden"}`} role="banner" aria-label="Main Header">
+      <nav className="navbar" aria-label="Primary Navigation">
         <div className="logo">
-          <Link to="/" onClick={handleLinkClick}>
+          <Link to="/" onClick={handleLinkClick} aria-label="Go to Home">
             <img src={Logo} alt="Little Lemon Logo" className="logo-img" />
           </Link>
         </div>
@@ -35,12 +35,14 @@ function Header() {
         <button
           className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="primary-menu"
         >
           ☰
         </button>
 
-        <ul className={`menu ${menuOpen ? "open" : ""}`}>
+        <ul id="primary-menu" className={`menu ${menuOpen ? "open" : ""}`}>
           <li>
             <Link to="/" onClick={handleLinkClick}>Home</Link>
           </li>

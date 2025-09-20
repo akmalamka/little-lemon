@@ -6,26 +6,37 @@ import "./BookingPage.css";
 
 function BookingPage({ availableTimes, dispatch }) {
   const navigate = useNavigate();
+
   const submitForm = (formData) => {
     const success = submitAPI(formData);
     if (success) {
       navigate("/confirmed");
     }
   };
+
   return (
-    <main className="booking-page">
-      <h1 className="booking-title">Reserve a Table</h1>
+    <main className="booking-page" aria-label="Booking Page">
+      <header>
+        <h1 className="booking-title">Reserve a Table</h1>
+        <p className="booking-subtitle">
+          Plan your special night at Little Lemon. Fill out the form below to book
+          your table in advance. We look forward to hosting you!
+        </p>
+      </header>
 
-      <p className="booking-subtitle">
-        Plan your special night at Little Lemon. Fill out the form below to book
-        your table in advance. We look forward to hosting you!
-      </p>
+      <section aria-label="Booking Form Section">
+        <BookingForm
+          availableTimes={availableTimes}
+          dispatch={dispatch}
+          submitForm={submitForm}
+        />
+      </section>
 
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch}  submitForm={submitForm}/>
-
-      <p className="booking-note">
-        For group reservations or private events, please contact us directly.
-      </p>
+      <footer>
+        <p className="booking-note">
+          For group reservations or private events, please contact us directly.
+        </p>
+      </footer>
     </main>
   );
 }

@@ -38,20 +38,32 @@ function Testimonials() {
   ];
 
   return (
-    <section className="testimonials">
-      <h2 className="testimonials-title">What Our Customers Say</h2>
+    <section className="testimonials" aria-label="Customer Testimonials">
+      <header>
+        <h2 className="testimonials-title">What Our Customers Say</h2>
+      </header>
+
       <div className="testimonials-grid">
         {reviews.map((review) => (
-          <div key={review.id} className="testimonial-card">
-            <div className="testimonial-rating">{review.rating}</div>
-            <img
-              src={review.img}
-              alt={review.name}
-              className="testimonial-img"
-            />
+          <article
+            key={review.id}
+            className="testimonial-card"
+            aria-label={`Review by ${review.name}`}
+          >
+            <div className="testimonial-rating" aria-label={`Rating: ${review.rating}`}>
+              {review.rating}
+            </div>
+            <figure>
+              <img
+                src={review.img}
+                alt={`Photo of ${review.name}`}
+                className="testimonial-img"
+              />
+              <figcaption className="sr-only">{review.name}</figcaption>
+            </figure>
             <h3 className="testimonial-name">{review.name}</h3>
             <p className="testimonial-text">{review.text}</p>
-          </div>
+          </article>
         ))}
       </div>
     </section>
