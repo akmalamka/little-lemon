@@ -1,77 +1,101 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import { fetchAPI } from "../../utils/api";
 import "./BookingForm.css";
 
 function BookingForm({ availableTimes, dispatch, submitForm }) {
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("17:00");
-  const [guests, setGuests] = useState(1);
-  const [occasion, setOccasion] = useState("Birthday");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const formData = { date, time, guests, occasion };
-    submitForm(formData);
+  const initialValues = {
+    date: "",
+    time: "",
+    guests: 1,
+    occasion: "",
   };
 
-  const handleDateChange = async (e) => {
+  const validationSchema = Yup.object({
+    date: Yup.string().required("Please select a date"),
+    time: Yup.string().required("Please select a time"),
+    guests: Yup.number()
+      .required("Number of guests is required")
+      .min(1, "Minimum 1 guest")
+      .max(10, "Maximum 10 guests"),
+    occasion: Yup.string().required("Please select an occasion"),
+  });
+
+  const handleDateChange = async (e, setFieldValue) => {
     const newDate = e.target.value;
-    setDate(newDate);
+    setFieldValue("date", newDate);
 
     const times = await fetchAPI(new Date(newDate));
-    console.log("🚀 ~ handleDateChange ~ times:", times)
-
     dispatch({ type: "SET", times });
   };
 
   return (
-    <form className="booking-form" onSubmit={handleSubmit}>
-      <label htmlFor="res-date">Choose date</label>
-      <input
-        type="date"
-        id="res-date"
-        value={date}
-        onChange={handleDateChange}
-        required
-      />
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={(values) => submitForm(values)}
+    >
+      {({ isValid, setFieldValue }) => (
+        <Form className="booking-form">
+          <label htmlFor="date">Choose date</label>
+          <Field
+            type="date"
+            id="date"
+            name="date"
+            onChange={(e) => handleDateChange(e, setFieldValue)}
+          />
+          <ErrorMessage
+            name="date"
+            component="div"
+            className="error-message"
+          />
 
-      <label htmlFor="res-time">Choose time</label>
-      <select
-        id="res-time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-      >
-        {availableTimes.map((t) => (
-          <option key={t}>{t}</option>
-        ))}
-      </select>
+          <label htmlFor="time">Choose time</label>
+          <Field as="select" id="time" name="time">
+            <option value="">-- Select a time --</option>
+            {availableTimes.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </Field>
+          <ErrorMessage
+            name="time"
+            component="div"
+            className="error-message"
+          />
 
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        type="number"
-        id="guests"
-        value={guests}
-        onChange={(e) => setGuests(e.target.value)}
-        min="1"
-        max="10"
-        required
-      />
+          <label htmlFor="guests">Number of guests</label>
+          <Field type="number" id="guests" name="guests" min="1" max="10" />
+          <ErrorMessage
+            name="guests"
+            component="div"
+            className="error-message"
+          />
 
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        id="occasion"
-        value={occasion}
-        onChange={(e) => setOccasion(e.target.value)}
-      >
-        <option>Birthday</option>
-        <option>Anniversary</option>
-      </select>
+          <label htmlFor="occasion">Occasion</label>
+          <Field as="select" id="occasion" name="occasion">
+            <option value="">-- Select an occasion --</option>
+            <option>Birthday</option>
+            <option>Anniversary</option>
+          </Field>
+          <ErrorMessage
+            name="occasion"
+            component="div"
+            className="error-message"
+          />
 
-      <button type="submit" className="submit-btn">
-        Make Your Reservation
-      </button>
-    </form>
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={!isValid}
+          >
+            Make Your Reservation
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 }
 

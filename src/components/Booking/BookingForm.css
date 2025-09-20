@@ -50,3 +50,17 @@
 .submit-btn:hover {
   background-color: #d4ae00; /* darker yellow */
 }
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error messages */
+.error-message {
+  color: var(--secondary-peach);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: -0.5rem;
+  margin-bottom: var(--space-sm);
+}
