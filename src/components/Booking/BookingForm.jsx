@@ -108,7 +108,6 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
             <button
               type="submit"
               className="submit-btn"
-              aria-label="On Click"
               disabled={!isValid}
             >
               Make Your Reservation
