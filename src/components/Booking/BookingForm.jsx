@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./BookingForm.css";
 
-function BookingForm() {
+function BookingForm({ availableTimes, dispatch }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
@@ -9,9 +9,16 @@ function BookingForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You could send form data to backend here
     console.log({ date, time, guests, occasion });
     alert("Reservation submitted!");
+  };
+
+  const handleDateChange = (e) => {
+    const newDate = e.target.value;
+    setDate(newDate);
+
+    // ✅ Trigger state update when date changes
+    dispatch({ type: "UPDATE", payload: newDate });
   };
 
   return (
@@ -21,7 +28,7 @@ function BookingForm() {
         type="date"
         id="res-date"
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={handleDateChange}
         required
       />
 
@@ -31,12 +38,9 @@ function BookingForm() {
         value={time}
         onChange={(e) => setTime(e.target.value)}
       >
-        <option>17:00</option>
-        <option>18:00</option>
-        <option>19:00</option>
-        <option>20:00</option>
-        <option>21:00</option>
-        <option>22:00</option>
+        {availableTimes.map((t) => (
+          <option key={t}>{t}</option>
+        ))}
       </select>
 
       <label htmlFor="guests">Number of guests</label>

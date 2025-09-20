@@ -1,8 +1,8 @@
 import React from "react";
 import BookingForm from "./BookingForm";
-import "./BookingPage.css"; // Import the new CSS
+import "./BookingPage.css";
 
-function BookingPage() {
+function BookingPage({ availableTimes, dispatch }) {
   return (
     <main className="booking-page">
       <h1 className="booking-title">Reserve a Table</h1>
@@ -12,7 +12,8 @@ function BookingPage() {
         your table in advance. We look forward to hosting you!
       </p>
 
-      <BookingForm />
+      {/* ✅ Pass props into BookingForm */}
+      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
 
       <p className="booking-note">
         For group reservations or private events, please contact us directly.
