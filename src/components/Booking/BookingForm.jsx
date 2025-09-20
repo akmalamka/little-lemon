@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { fetchAPI } from "../../utils/api";
 import "./BookingForm.css";
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
@@ -9,16 +10,19 @@ function BookingForm({ availableTimes, dispatch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ date, time, guests, occasion });
-    alert("Reservation submitted!");
+
+    const formData = { date, time, guests, occasion };
+    submitForm(formData);
   };
 
-  const handleDateChange = (e) => {
+  const handleDateChange = async (e) => {
     const newDate = e.target.value;
     setDate(newDate);
 
-    // ✅ Trigger state update when date changes
-    dispatch({ type: "UPDATE", payload: newDate });
+    const times = await fetchAPI(new Date(newDate));
+    console.log("🚀 ~ handleDateChange ~ times:", times)
+
+    dispatch({ type: "SET", times });
   };
 
   return (

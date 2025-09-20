@@ -1,28 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useReducer } from "react";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { useEffect, useReducer } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main/Main";
 import BookingPage from "./components/Booking/BookingPage";
-
-// ✅ Initial times
-const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-};
-
-// ✅ Reducer for available times
-const updateTimes = (state, action) => {
-  switch (action.type) {
-    case "UPDATE":
-      // For now, always return same set
-      return initializeTimes();
-    default:
-      return state;
-  }
-};
+import ConfirmedBooking from "./components/Booking/ConfirmedBooking";
+import { updateTimes, initializeTimes } from "./utils/times";
 
 function App() {
-  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+
+  const [availableTimes, dispatch] = useReducer(updateTimes, []);
+
+  useEffect(() => {
+    const loadTimes = async () => {
+      const times = await initializeTimes();
+      dispatch({ type: "SET", times });
+    };
+    loadTimes();
+  }, []);
 
   return (
     <Router>
@@ -38,6 +33,7 @@ function App() {
             />
           }
         />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
       </Routes>
       <Footer />
     </Router>
