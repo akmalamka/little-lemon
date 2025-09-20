@@ -1,0 +1,52 @@
+.booking-form {
+  display: grid;
+  max-width: 400px;
+  gap: var(--space-md);
+  margin: 0 auto;
+  padding: var(--space-lg);
+  background: var(--highlight-light);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-body);
+}
+
+.booking-form label {
+  font-weight: 600;
+  color: var(--highlight-dark);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+}
+
+.booking-form input,
+.booking-form select {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(73, 94, 87, 0.2);
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--primary-yellow);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #d4ae00; /* darker yellow */
+}

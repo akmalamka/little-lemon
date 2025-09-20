@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // ✅ import Link
 import "./Header.css";
 import Logo from "../assets/Logo.svg";
+
 function Header() {
   const [prevScroll, setPrevScroll] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -24,9 +26,9 @@ function Header() {
     <header className={`site-header ${visible ? "visible" : "hidden"}`}>
       <nav className="navbar">
         <div className="logo">
-          <a href="#home">
+          <Link to="/" onClick={handleLinkClick}>
             <img src={Logo} alt="Little Lemon Logo" className="logo-img" />
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger for mobile */}
@@ -39,12 +41,24 @@ function Header() {
         </button>
 
         <ul className={`menu ${menuOpen ? "open" : ""}`}>
-          <li><a href="#home" onClick={handleLinkClick}>Home</a></li>
-          <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-          <li><a href="#menu" onClick={handleLinkClick}>Menu</a></li>
-          <li><a href="#reservations" onClick={handleLinkClick}>Reservations</a></li>
-          <li><a href="#order-online" onClick={handleLinkClick}>Order Online</a></li>
-          <li><a href="#login" onClick={handleLinkClick}>Login</a></li>
+          <li>
+            <Link to="/" onClick={handleLinkClick}>Home</Link>
+          </li>
+          <li>
+            <Link to="/about" onClick={handleLinkClick}>About</Link>
+          </li>
+          <li>
+            <Link to="/menu" onClick={handleLinkClick}>Menu</Link>
+          </li>
+          <li>
+            <Link to="/reservations" onClick={handleLinkClick}>Reservations</Link>
+          </li>
+          <li>
+            <Link to="/order-online" onClick={handleLinkClick}>Order Online</Link>
+          </li>
+          <li>
+            <Link to="/login" onClick={handleLinkClick}>Login</Link>
+          </li>
         </ul>
       </nav>
     </header>
